@@ -1,15 +1,11 @@
 <script>
-import numericInput from "./editor/numeric.vue";
-
 export default {
-  components: {
-    "numeric-input": numericInput
-  },
   data() {
     return {
       startValue: 0,
       addedValue: 0,
-      results: []
+      results: [],
+      message: "its really long message and we cut it"
     };
   },
   methods: {
@@ -28,7 +24,11 @@ export default {
 
 <template>
   <div>
-    <div id="input">
+    <div class="input">
+      <text-input label="Message" v-model="message"></text-input>
+    </div>
+    <h1>{{message | readMore(10)}}</h1>
+    <div class="input">
       <numeric-input label="Start Value" v-model.number="startValue" v-on:keyup.enter.native="add"></numeric-input>
       <numeric-input label="Added Value" v-model.number="addedValue" v-on:keyup.enter.native="add"></numeric-input>
     </div>
@@ -42,7 +42,7 @@ export default {
 </template>
 
 <style scoped>
-#input {
+.input {
   margin-top: 10px;
 }
 

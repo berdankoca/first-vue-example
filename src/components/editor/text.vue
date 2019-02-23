@@ -13,8 +13,8 @@ export default {
       type: String
     },
     value: {
-      type: Number,
-      default: 0
+      type: String,
+      default: ""
     },
     label: {
       type: String,
@@ -22,10 +22,7 @@ export default {
     }
   },
   data() {
-    return {
-      min: 0,
-      max: 9999999
-    };
+    return {};
   },
   methods: {
     updateValue(event) {
@@ -41,9 +38,7 @@ export default {
     },
     attributes() {
       return {
-        ...this.$attrs,
-        min: this.min,
-        max: this.max
+        ...this.$attrs
       };
     }
   }
@@ -55,7 +50,7 @@ export default {
     <div>
       <label>{{label}}</label>:
       <input
-        type="number"
+        type="text"
         v-bind:name="name"
         v-bind:value="value"
         v-bind="attributes"
